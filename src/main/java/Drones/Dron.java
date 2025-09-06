@@ -1,16 +1,33 @@
 package Drones;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Misiones.Mision;
 
 public abstract class Dron {
-    private Integer autonomia = 0;
+    private Integer autonomia;
     private final Integer procesamiento;
     private Mision misionActual;
-    private boolean esAvanzado;
+    private List<Sensor> sensores = new ArrayList<>();
 
     public Dron(Integer autonomia, Integer procesamiento) {
         this.autonomia = autonomia;
         this.procesamiento = procesamiento;
+    }
+
+    public void agregarSensor(Sensor unSensor) {
+        sensores.add(unSensor);
+    }
+
+    public boolean tieneTodosLosSensoresDuraderos() {
+        return sensores.stream().allMatch(sensor -> sensor.esDuradero());
+    }
+
+    public abstract boolean esAvanzado();
+
+    public boolean esAvanzadoEnSuMision() {
+        return misionActual.esAvanzadoEnEstaMision(this);
     }
 
     public Integer getEficienciaOperativa() {

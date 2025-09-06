@@ -11,6 +11,10 @@ public class Sensor {
         this.tieneMejorasTecnologicas = tieneMejorasTecnologicas;
     }
 
+    public boolean esDuradero() {
+        return durabilidad > (capacidad * 2);
+    }
+
     public Integer getEficiencia() {
         Integer eficienciaFinal = capacidad;
         if (tieneMejorasTecnologicas) {

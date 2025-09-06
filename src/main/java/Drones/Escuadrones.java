@@ -12,6 +12,10 @@ public class Escuadrones {
         if (this.sePuedeAgregarUnDron()) {
             drones.add(unDron);    
         }
+        else {
+            throw new IllegalStateException("Supera la cantidad maxima permitida en la ciudad");
+        }
+
     }
 
     private boolean sePuedeAgregarUnDron() {
