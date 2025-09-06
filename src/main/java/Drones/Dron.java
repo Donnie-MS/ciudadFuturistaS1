@@ -6,6 +6,7 @@ public abstract class Dron {
     private Integer autonomia = 0;
     private final Integer procesamiento;
     private Mision misionActual;
+    private boolean esAvanzado;
 
     public Dron(Integer autonomia, Integer procesamiento) {
         this.autonomia = autonomia;
@@ -13,7 +14,7 @@ public abstract class Dron {
     }
 
     public Integer getEficienciaOperativa() {
-        
+        return (autonomia * 10) + misionActual.getExtra();
     }
 
     public void cambiarMision(Mision nuevaMision) {

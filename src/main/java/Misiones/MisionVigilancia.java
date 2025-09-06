@@ -5,11 +5,15 @@ import java.util.List;
 
 import Drones.Sensor;
 
-public class MisionVigilancia {
+public class MisionVigilancia extends Mision{
     List<Sensor> sensores = new ArrayList<>();
     public Integer getExtra() {
-        return 10;
+        return this.eficienciaDeSensores();
     }
 
-
+    private Integer eficienciaDeSensores() {
+        return sensores.stream()
+            .mapToInt(sensor -> sensor.getEficiencia())
+            .sum();
+    }
 }
